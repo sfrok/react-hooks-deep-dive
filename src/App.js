@@ -5,11 +5,14 @@ import { BrowserRouter } from "react-router-dom";
 // Routes
 import { Routes } from "./pages/routes";
 
+// Shared
+import { NavBar } from "./components";
+
 export const App = () => {
   return (
     <div>
-      <h1>App</h1>
       <BrowserRouter>
+        <NavBar />
         <Routes />
       </BrowserRouter>
     </div>
