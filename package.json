@@ -46,6 +46,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
+    "axios": "^0.21.0",
     "core-js": "^3.8.1",
     "husky": "^4.3.5",
     "react": "^17.0.1",

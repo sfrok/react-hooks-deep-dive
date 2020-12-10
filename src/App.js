@@ -6,15 +6,20 @@ import { BrowserRouter } from "react-router-dom";
 import { Routes } from "./pages/routes";
 
 // Shared
-import { NavBar } from "./components";
+import { CurrentUserChecker, NavBar } from "./components";
+
+// Providers
+import { CurrentUserProvider } from "./context";
 
 export const App = () => {
   return (
-    <div>
-      <BrowserRouter>
-        <NavBar />
-        <Routes />
-      </BrowserRouter>
-    </div>
+    <CurrentUserProvider>
+      <CurrentUserChecker>
+        <BrowserRouter>
+          <NavBar />
+          <Routes />
+        </BrowserRouter>
+      </CurrentUserChecker>
+    </CurrentUserProvider>
   );
 };
