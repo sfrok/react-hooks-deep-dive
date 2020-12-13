@@ -3,4 +3,6 @@ export const book = {
   login: "/login",
   register: "/register",
   articles: "/articles/:slug",
+  new_article: "/articles/new",
+  profile: "/profiles/",
 };
