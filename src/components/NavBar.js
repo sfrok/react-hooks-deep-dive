@@ -10,7 +10,6 @@ import { CurrentUserContext } from "../context";
 
 export const NavBar = () => {
   const [currentUser] = useContext(CurrentUserContext);
-
   return (
     <nav className="navbar navbar-light">
       <div className="container">

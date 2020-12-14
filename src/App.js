@@ -11,7 +11,10 @@ import { CurrentUserChecker, NavBar } from "./components";
 // Providers
 import { CurrentUserProvider } from "./context";
 
-export const App = () => {
+// Hot
+import { hot } from "react-hot-loader/root";
+
+const Main = () => {
   return (
     <CurrentUserProvider>
       <CurrentUserChecker>
@@ -23,3 +26,5 @@ export const App = () => {
     </CurrentUserProvider>
   );
 };
+
+export const App = hot(Main);
