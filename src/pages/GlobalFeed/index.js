@@ -1,19 +1,30 @@
 // Core
 import React, { useEffect } from "react";
+import { stringify } from "query-string";
 
 // Hooks
 import { useFetch } from "../../hooks";
 
 // Components
-import { Feed } from "../../components/Feed";
+import { Feed } from "../../components";
+import { Pagination } from "../../components";
 
-export const GlobalFeed = () => {
-  const baseURL = "/articles?limit=10&offset=0";
+// Utils
+import { limit, getPaginator } from "../../utils";
+
+export const GlobalFeed = ({ location, match }) => {
+  const { offset, currentPage } = getPaginator(location.search);
+  const url = match.url;
+  const stringifiedParams = stringify({
+    limit,
+    offset,
+  });
+  const baseURL = `/articles?${stringifiedParams}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {
     fetcher();
-  }, [fetcher]);
+  }, [fetcher, currentPage]);
 
   return (
     <>
@@ -29,7 +40,17 @@ export const GlobalFeed = () => {
             <div className="col-md-9">
               {isLoading && <div>Loading...</div>}
               {error && <div>Something went wrong...</div>}
-              {!isLoading && response && <Feed articles={response.articles} />}
+              {!isLoading && response && (
+                <>
+                  <Feed articles={response.articles} />
+                  <Pagination
+                    total={response.articlesCount}
+                    limit={limit}
+                    currentPage={currentPage}
+                    url={url}
+                  />
+                </>
+              )}
             </div>
             <div className="col-md-3">Popular tags</div>
           </div>
