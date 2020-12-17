@@ -38,7 +38,7 @@ export const NavBar = () => {
           ) : (
             <>
               <li className="nav-item">
-                <NavLink to={book.new_article} className="nav-link">
+                <NavLink to={`${book.articles}/new`} className="nav-link">
                   <i className="ion-compose"></i>
                   &nbsp; New Post
                 </NavLink>

@@ -16,7 +16,7 @@ export const Routes = () => {
       <Route path={book.main} exact component={GlobalFeed} />
       <Route path={book.login} component={Authentication} />
       <Route path={book.register} component={Authentication} />
-      <Route path={book.articles} component={Article} />
+      <Route path={`${book.articles}:slug`} component={Article} />
     </Switch>
   );
 };

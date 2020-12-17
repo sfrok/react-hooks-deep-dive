@@ -2,7 +2,7 @@ export const book = {
   main: "/",
   login: "/login",
   register: "/register",
-  articles: "/articles/:slug",
-  new_article: "/articles/new",
+  articles: "/articles/",
   profile: "/profiles/",
+  tags: "/tags/",
 };
