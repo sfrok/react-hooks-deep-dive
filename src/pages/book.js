@@ -5,4 +5,5 @@ export const book = {
   articles: "/articles/",
   profile: "/profiles/",
   tags: "/tags/",
+  feed: "/feed/",
 };

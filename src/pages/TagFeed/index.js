@@ -18,19 +18,21 @@ import {
 // Utils
 import { limit, getPaginator } from "../../utils";
 
-export const GlobalFeed = ({ location, match }) => {
+export const TagFeed = ({ location, match }) => {
+  const tagName = match.params.slug;
   const { offset, currentPage } = getPaginator(location.search);
   const url = match.url;
   const stringifiedParams = stringify({
     limit,
     offset,
+    tag: tagName,
   });
   const baseURL = `/articles?${stringifiedParams}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {
     fetcher();
-  }, [fetcher, currentPage]);
+  }, [fetcher, currentPage, tagName]);
 
   return (
     <>
@@ -44,7 +46,7 @@ export const GlobalFeed = ({ location, match }) => {
         <div className="container page">
           <div className="row">
             <div className="col-md-9">
-              <FeedToggler />
+              <FeedToggler tagName={tagName} />
               {isLoading && <Loading />}
               {error && <Error />}
               {!isLoading && response && (

@@ -18,14 +18,14 @@ import {
 // Utils
 import { limit, getPaginator } from "../../utils";
 
-export const GlobalFeed = ({ location, match }) => {
+export const UserFeed = ({ location, match }) => {
   const { offset, currentPage } = getPaginator(location.search);
   const url = match.url;
   const stringifiedParams = stringify({
     limit,
     offset,
   });
-  const baseURL = `/articles?${stringifiedParams}`;
+  const baseURL = `/articles/feed?${stringifiedParams}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {

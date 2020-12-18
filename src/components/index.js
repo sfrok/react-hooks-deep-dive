@@ -5,3 +5,4 @@ export { Feed } from "./Feed";
 export { PopularTags } from "./PopularTags";
 export { Error } from "./Error";
 export { Loading } from "./Loading";
+export { FeedToggler } from "./FeedToggler";
