@@ -3,13 +3,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: ["react-hot-loader/patch", "./src/"],
   resolve: {
     extensions: [".js", ".jsx", ".json"],
+    alias: {
+      "react-dom": "@hot-loader/react-dom",
+    },
   },
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "main-[hash:8].js",
+    filename: "main-[fullhash:8].js",
     publicPath: "/", //  allows you to specify the base path for all the assets within your application
   },
   module: {
@@ -42,6 +45,7 @@ module.exports = {
     contentBase: path.join(__dirname, "build"),
     compress: true,
     open: true,
+    overlay: true,
     hot: true,
     historyApiFallback: true, // it tell Webpack Dev Server to redirect all server requests to /index.html.
     port: 3000,

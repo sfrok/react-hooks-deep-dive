@@ -2,5 +2,8 @@ export const book = {
   main: "/",
   login: "/login",
   register: "/register",
-  articles: "/articles/:slug",
+  articles: "/articles/",
+  profile: "/profiles/",
+  tags: "/tags/",
+  feed: "/feed/",
 };

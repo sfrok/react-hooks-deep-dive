@@ -10,5 +10,8 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    ["@babel/plugin-proposal-decorators", { legacy: true }],
+    ["react-hot-loader/babel"],
+  ],
 };
