@@ -17,6 +17,7 @@ import {
 
 // Utils
 import { limit, getPaginator } from "../../utils";
+import { book } from "../book";
 
 export const TagFeed = ({ location, match }) => {
   const tagName = match.params.slug;
@@ -27,7 +28,7 @@ export const TagFeed = ({ location, match }) => {
     offset,
     tag: tagName,
   });
-  const baseURL = `/articles?${stringifiedParams}`;
+  const baseURL = `${book.articles}?${stringifiedParams}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {

@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ESLintPlugin = require("eslint-webpack-plugin");
 
 module.exports = {
   entry: ["react-hot-loader/patch", "./src/"],
@@ -40,6 +41,7 @@ module.exports = {
       template: "./public/index.html",
     }),
     new CleanWebpackPlugin(),
+    new ESLintPlugin(),
   ],
   devServer: {
     contentBase: path.join(__dirname, "build"),

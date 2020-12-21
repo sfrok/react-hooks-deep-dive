@@ -13,7 +13,7 @@ import { Error } from "./Error";
 import { book } from "../pages/book";
 
 export const PopularTags = () => {
-  const baseURL = "/tags/";
+  const baseURL = `${book.tags}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {
