@@ -9,33 +9,29 @@ import { CurrentUserContext } from "../context";
 
 export const CurrentUserChecker = ({ children }) => {
   const [{ response }, fetcher] = useFetch("/user");
-  const [, setCurrentUserState] = useContext(CurrentUserContext);
+  const [, dispatch] = useContext(CurrentUserContext);
   const [token] = useLocalStorage("token");
 
   useEffect(() => {
     if (!token) {
-      setCurrentUserState((state) => ({
-        ...state,
-        isLoggedIn: false,
-      }));
+      dispatch({
+        type: "SET_UNAUTHORIZED",
+      });
       return;
     }
     fetcher();
-    setCurrentUserState((state) => ({
-      ...state,
-      isLoading: true,
-    }));
-  }, [token, setCurrentUserState, fetcher]);
+    dispatch({
+      type: "LOADING",
+    });
+  }, [token, dispatch, fetcher]);
 
   useEffect(() => {
     if (!response) return;
-    setCurrentUserState((state) => ({
-      ...state,
-      isLoggedIn: true,
-      isLoading: false,
-      currentUser: response.user,
-    }));
-  }, [response, setCurrentUserState]);
+    dispatch({
+      type: "SET_AUTHORIZED",
+      payload: response.user,
+    });
+  }, [response, dispatch]);
 
   return children;
 };
