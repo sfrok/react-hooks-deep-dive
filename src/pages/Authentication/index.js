@@ -12,7 +12,7 @@ import { useFetch, useLocalStorage } from "../../hooks";
 import { CurrentUserContext } from "../../context";
 
 // Components
-import { Catcher } from "./components/Catcher";
+import { Catcher } from "../../components";
 
 export const Authentication = () => {
   const { pathname } = useLocation();
@@ -22,9 +22,9 @@ export const Authentication = () => {
   const [password, setPassword] = useState("");
   const [username, setUserName] = useState("");
   const [isSuccessfulSubmit, setIsSuccessfulSubmit] = useState(false);
-  const [, setCurrentUserState] = useContext(CurrentUserContext);
+  const [, dispatch] = useContext(CurrentUserContext);
 
-  const apiUrl = isLoginPage ? "users/login" : "/users";
+  const apiUrl = isLoginPage ? "/users/login" : "/users";
   const [{ isLoading, response, error }, fetcher] = useFetch(apiUrl);
   const [, setToken] = useLocalStorage("token");
 
@@ -51,13 +51,17 @@ export const Authentication = () => {
     if (!response) return;
     setToken(response.user.token);
     setIsSuccessfulSubmit(true);
-    setCurrentUserState((state) => ({
-      ...state,
-      isLoggedIn: true,
-      isLoading: false,
-      currentUserState: response.user,
-    }));
-  }, [response, setToken, setCurrentUserState]);
+    dispatch({
+      type: "SET_AUTHORIZED",
+      payload: response.user,
+    });
+    // setCurrentUserState((state) => ({
+    //   ...state,
+    //   isLoggedIn: true,
+    //   isLoading: false,
+    //   currentUserState: response.user,
+    // }));
+  }, [response, setToken, dispatch]);
 
   if (isSuccessfulSubmit) {
     return <Redirect to={book.main} />;

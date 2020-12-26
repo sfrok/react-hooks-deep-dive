@@ -17,6 +17,7 @@ import {
 
 // Utils
 import { limit, getPaginator } from "../../utils";
+import { book } from "../book";
 
 export const GlobalFeed = ({ location, match }) => {
   const { offset, currentPage } = getPaginator(location.search);
@@ -25,7 +26,7 @@ export const GlobalFeed = ({ location, match }) => {
     limit,
     offset,
   });
-  const baseURL = `/articles?${stringifiedParams}`;
+  const baseURL = `${book.articles}?${stringifiedParams}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {

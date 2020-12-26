@@ -5,6 +5,9 @@ import { Link } from "react-router-dom";
 // Tools
 import { book } from "../pages/book";
 
+// Components
+import { Tags } from "./Tags";
+
 export const Feed = ({ articles }) => {
   return (
     <>
@@ -28,13 +31,7 @@ export const Feed = ({ articles }) => {
             <h1>{article.title}</h1>
             <p>{article.description}</p>
             <span>Read more...</span>
-            <ul className="tag-list">
-              {article.tagList.map((tag) => (
-                <li key={tag} className="tag-default tag-outline tag-pill">
-                  {tag}
-                </li>
-              ))}
-            </ul>
+            <Tags tagList={article.tagList} />
           </Link>
         </div>
       ))}

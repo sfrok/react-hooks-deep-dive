@@ -17,6 +17,7 @@ import {
 
 // Utils
 import { limit, getPaginator } from "../../utils";
+import { book } from "../book";
 
 export const UserFeed = ({ location, match }) => {
   const { offset, currentPage } = getPaginator(location.search);
@@ -25,7 +26,7 @@ export const UserFeed = ({ location, match }) => {
     limit,
     offset,
   });
-  const baseURL = `/articles/feed?${stringifiedParams}`;
+  const baseURL = `${book.articles}feed?${stringifiedParams}`;
   const [{ response, isLoading, error }, fetcher] = useFetch(baseURL);
 
   useEffect(() => {

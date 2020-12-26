@@ -6,3 +6,6 @@ export { PopularTags } from "./PopularTags";
 export { Error } from "./Error";
 export { Loading } from "./Loading";
 export { FeedToggler } from "./FeedToggler";
+export { Tags } from "./Tags";
+export { ArticleForm } from "./ArticleForm";
+export { Catcher } from "./Catcher";
