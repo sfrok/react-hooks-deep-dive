@@ -20,6 +20,8 @@ const reducer = (state, action) => {
       };
     case "SET_UNAUTHORIZED":
       return state;
+    case "LOGOUT":
+      return state;
     default:
       return state;
   }
