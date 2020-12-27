@@ -44,6 +44,12 @@ export const NavBar = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
+                <NavLink to={book.settings} className="nav-link">
+                  <i className="ion-gear-a" />
+                  &nbsp; Settings
+                </NavLink>
+              </li>
+              <li className="nav-item">
                 <NavLink
                   to={`${book.profile}${currentUser.currentUser.username}`}
                   className="nav-link"
