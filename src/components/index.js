@@ -9,3 +9,4 @@ export { FeedToggler } from "./FeedToggler";
 export { Tags } from "./Tags";
 export { ArticleForm } from "./ArticleForm";
 export { Catcher } from "./Catcher";
+export { AddToFavorite } from "./AddToFavorite";

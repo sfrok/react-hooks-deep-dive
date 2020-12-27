@@ -7,6 +7,7 @@ import { book } from "../pages/book";
 
 // Components
 import { Tags } from "./Tags";
+import { AddToFavorite } from "./AddToFavorite";
 
 export const Feed = ({ articles }) => {
   return (
@@ -25,6 +26,13 @@ export const Feed = ({ articles }) => {
                 {article.author.username}
               </Link>
               <span className="date">{article.createdAt}</span>
+            </div>
+            <div className="pull-xs-right">
+              <AddToFavorite
+                isFavorited={article.favorited}
+                favoritesCount={article.favoritesCount}
+                articleSlug={article.slug}
+              />
             </div>
           </div>
           <Link to={`${book.articles}${article.slug}`} className="preview-link">
