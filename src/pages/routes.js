@@ -11,6 +11,7 @@ import { UserFeed } from "./UserFeed";
 import { CreateArticle } from "./CreateArticle";
 import { EditArticle } from "./EditArticle";
 import { Settings } from "./Settings";
+import { UserProfile } from "./UserProfile";
 
 // Tools
 import { book } from "./book";
@@ -20,6 +21,8 @@ export const Routes = () => {
     <Switch>
       <Route path={book.main} exact component={GlobalFeed} />
       <Route path={book.feed} component={UserFeed} />
+      <Route path={`${book.profile}:slug`} exact component={UserProfile} />
+      <Route path={`${book.profile}:slug/favorites`} component={UserProfile} />
       <Route path={`${book.tags}:slug`} component={TagFeed} />
       <Route path={book.login} component={Authentication} />
       <Route path={book.register} component={Authentication} />
